@@ -6,8 +6,8 @@ const tagRoutes = require('./tag-routes.js');
 const productTagRoutes = require('./productTag-routes.js');
 
 router.use('/category', categoryRoutes);
-router.use('/product', productRoutes);
-router.use('/tag', productRoutes);
-router.use('/productTag', productRoutes);
+router.use('/products', productRoutes);
+router.use('/tags', tagRoutes);
+router.use('/productTags', productTagRoutes);
 
 module.exports = router;
