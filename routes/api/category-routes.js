@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     Category.create({
-      name: req.body.name,
+      category_name: req.body.category_name,
     })
       .then(dbCategoryData => res.json(dbCategoryData))
       .catch(err => {

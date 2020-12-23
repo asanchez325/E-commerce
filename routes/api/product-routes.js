@@ -6,12 +6,12 @@ router.get('/', (req, res) => {
     console.log('======================');
     Product.findAll({
       // Query configuration
-      attributes: ['id', 'name', 'price', 'stock', 'created_at'],
+      attributes: ['id', 'product_name', 'price', 'stock', 'created_at'],
       order: [['created_at','DESC']],
       include: [
         {
         model: Category,
-        attributes: ['name']
+        attributes: ['category_name']
         }
     ]
 })
@@ -27,11 +27,11 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'name', 'price', 'stock', 'created_at'],
+      attributes: ['id', 'product_name', 'price', 'stock', 'created_at'],
       include: [
         {
           model: Category,
-          attributes: ['name']
+          attributes: ['category_name']
         }
       ]
     })
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 
   router.post('/', (req, res) => {
       Product.create({
-      name: req.body.name,
+      product_name: req.body.product_name,
       price: req.body.price,
       stock: req.body.stock,
       category_id: req.body.category_id
@@ -64,7 +64,7 @@ router.get('/:id', (req, res) => {
   router.put('/:id', (req, res) => {
     Post.update(
       {
-        name: req.body.name
+        product_name: req.body.product_name
       },
       {
         where: {
