@@ -32,7 +32,7 @@ ProductTag.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'product'
+      modelName: 'productTag'
     }
   );
 
