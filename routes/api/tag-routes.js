@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tag, Product, ProductTag} = require('../../models');
+const { Tag, Product, Product} = require('../../models');
 
 // GET /api/tags
 router.get('/', (req, res) => {
@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
       })
   });
 
-  // POST /api/users
+  // POST /api/tag
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     Tag.create({
@@ -60,9 +60,8 @@ router.post('/', (req, res) => {
       });
   });
 
-  // PUT /api/users/1
+  // PUT /api/tag/1
 router.put('/:id', (req, res) => {
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
     Tag.update(req.body, {
@@ -83,7 +82,7 @@ router.put('/:id', (req, res) => {
       });
   });
 
-  // DELETE /api/users/1
+  // DELETE /api/tag/1
 router.delete('/:id', (req, res) => {
     Tag.destroy({
       where: {
