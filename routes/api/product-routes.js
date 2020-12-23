@@ -62,7 +62,7 @@ router.get('/:id', (req, res) => {
       });
   });
   router.put('/:id', (req, res) => {
-    Post.update(
+    Product.update(
       {
         product_name: req.body.product_name
       },
@@ -86,7 +86,7 @@ router.get('/:id', (req, res) => {
   });
 
   router.delete('/:id', (req, res) => {
-    Post.destroy({
+    Product.destroy({
       where: {
         id: req.params.id
       }

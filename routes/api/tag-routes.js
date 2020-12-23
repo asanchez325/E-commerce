@@ -1,10 +1,18 @@
 const router = require('express').Router();
-const { Tag } = require('../../models');
+const { Tag, Product, ProductTag} = require('../../models');
 
 // GET /api/tags
 router.get('/', (req, res) => {
     // Access our Tag model and run .findAll() method)
-    Tag.findAll()
+    Tag.findAll({
+        attributes: ['id', 'tag_name'],
+        include: [
+          {
+            model: Product,
+            attributes: ['product_name']
+          }
+        ]
+    })
       .then(dbTagData => res.json(dbTagData))
       .catch(err => {
         console.log(err);
@@ -17,7 +25,14 @@ router.get('/:id', (req, res) => {
     Tag.findOne({
       where: {
         id: req.params.id
-      }
+      },
+        attributes: ['id', 'tag_name'],
+        include: [
+          {
+            model: Product,
+            attributes: ['product_name']
+          }
+        ]
     })
       .then(dbTagData => {
         if (!dbTagData) {
@@ -29,7 +44,7 @@ router.get('/:id', (req, res) => {
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
-      });
+      })
   });
 
   // POST /api/users
